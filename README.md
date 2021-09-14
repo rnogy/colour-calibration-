@@ -7,7 +7,8 @@ This program will uses images taken to train a haar cascade classifer.
 The trained model can then be used to detect the object and calibrate the image colour. 
 
 ## Requirements
-Python 3.3+ or Python 2.7
+Python 3.3+
+Opencv 3.4.1
 
 Linux or macOS
 OpenCV
