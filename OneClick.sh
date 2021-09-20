@@ -22,27 +22,26 @@ while IFS= read -r line; do mv "$line" ./Negative_img/"$i".jpg ; i=$((i+1)); don
 rm -rf temp.txt
 rm -rf temp
 
-python Resize.py "$(PWD | awk '{print $0"/Positive_img"}')"
-python Resize.py "$(PWD | awk '{print $0"/Negative_img"}')"
+python Resize.py $(pwd | awk '{print $0"/Positive_img"}')
+python Resize.py $(pwd | awk '{print $0"/Negative_img"}')
 #mv $(find ./Negative_img -type f | sort -zR | tail -n +300) ./Validation_set/Negative_img
 echo "Finished Downloading Images"
 
-
 echo "Creating Samples"
-find ./Positive_img -iname "*.jpg" | awk '{print $0" 1 0 0 80 80"}' > positives.txt
-find ./Negative_img -iname "*.jpg" | awk '{print $0" 1 0 0 80 80"}' > negatives.txt
+find $(pwd)/Positive_img -iname "*.jpg" | awk '{print $0" 1 0 0 24 24"}' > positives.info
+find $(pwd)/Negative_img -iname "*.jpg"  > negatives.info
 
-opencv_createsamples -info positives.txt  -w 80 -h 80 -vec samples.vec
+opencv_createsamples -info positives.info -vec samples.vec -w 24 -h 24 -num 2000
 echo "end of gathering samples"
-
 
 echo "Start Training"
 mkdir classifier
 
 #Assuming the device has more than 6 GB of Ram
 
-opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt\
-          -numStages 20 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000\
-          -numNeg 2000 -w 80 -h 80 -mode ALL -precalcValBufSize 3072\
-          -precalcIdxBufSize 3072
+opencv_traincascade -data classifier -vec $(pwd)/samples.vec -bg negatives.info\
+          -numStages 10 -numPos 500\
+          -numNeg 500 -w 24 -h 24 -mode ALL -precalcValBufSize 2048\
+          -precalcIdxBufSize 2048
+
 echo "End Of Training"

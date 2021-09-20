@@ -11,7 +11,8 @@ def main(output):
         print(os.path.join(os.getcwd(), i))
         if type(img) == numpy.ndarray:
           print(i)
-          cv2.imwrite(img, cv2.resize(img, (80,80)))
+          img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+          cv2.imwrite(os.path.join(output, i), cv2.resize(img, (40,40)))
           num = num + 1
 
 

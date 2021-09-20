@@ -1,4 +1,4 @@
- # Haar_Cascade_Classifier and Colour calibration
+ # Haar_Cascade_Classifier_Training_Face
 
 
 ## Background
@@ -7,8 +7,7 @@ This program will uses images taken to train a haar cascade classifer.
 The trained model can then be used to detect the object and calibrate the image colour. 
 
 ## Requirements
-Python 3.3+
-Opencv 3.4.1
+Python 3.3+ or Python 2.7
 
 Linux or macOS
 OpenCV
@@ -27,6 +26,14 @@ Python Libraries:
 sh OneClick.sh
 ```
 
+## Docker
+
+```bash
+docker build .
+```
+
+Unfortunately, it is not possible to mount host dir during build. 
+Please use "--mount type=bind,source=<host dir>,target=/test" when starting the docker. You can run sh OneClick.sh insider the container.
 
 ## Sidenote
 
