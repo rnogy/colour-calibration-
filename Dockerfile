@@ -16,7 +16,8 @@ WORKDIR /source/opencv/build
 RUN cmake .. && make && make install
 
 WORKDIR /source
-RUN echo 'alias python=python3' > /root/.bashrc
+RUN echo 'alias python=python3' > home/.bashrc
+RUN source /home/.bashrc
 RUN pip install numpy opencv-python
 
 RUN echo 'Unfortunately, it is not possible to mount host dir during build. Please use "--mount type=bind,source=<host dir>,target=/test" when starting the docker. You can run sh OneClick.sh after'
