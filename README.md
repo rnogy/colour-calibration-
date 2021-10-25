@@ -53,3 +53,7 @@ opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt\
 Note that the combination of both parameters equals the amount of Ram you wish to use.
 
 The training is assuming to be done on a computer, the model can be implemented in edge devices. 
+ 
+## PS
+ 
+Nagative images are taken from https://github.com/JoakimSoderberg/haarcascade-negatives. 
