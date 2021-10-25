@@ -1,4 +1,4 @@
- # Haar_Cascade_Classifier_Training_Face
+ # Haar_Cascade_Classifier_Training
 
 
 ## Background
