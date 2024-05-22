@@ -1,10 +1,12 @@
  # Haar_Cascade_Classifier_Training
 
+Note: This project is a modification of my high school APCSA final project. Some links or APIs might not be functional anymore due to the passage of time. 
+Regretfully, I do not have the package version number nor the Docker container. However, it was a project I'm VERY proud of. 
 
 ## Background
 
 This program will uses images taken to train a haar cascade classifer. 
-The trained model can then be used to detect the object and calibrate the image colour. 
+The trained model can then be used to detect the object. With the intention for calibrate the image colour later on.
 
 ## Requirements
 Python 3.3+ or Python 2.7
